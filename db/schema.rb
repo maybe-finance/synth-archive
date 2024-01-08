@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_07_230124) do
     t.string "mic_code"
     t.string "country"
     t.string "timezone"
+    t.string "currency"
     t.string "color"
     t.text "description"
     t.jsonb "links"
@@ -147,6 +148,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_07_230124) do
     t.integer "day_of_week"
     t.time "open_time"
     t.time "close_time"
+    t.time "intermision_start_time"
+    t.time "intermision_end_time"
+    t.time "pre_trade_start_time"
+    t.time "pre_trade_end_time"
+    t.time "post_trade_start_time"
+    t.time "post_trade_end_time"
     t.date "specific_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

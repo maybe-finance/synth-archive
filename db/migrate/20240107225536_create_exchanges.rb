@@ -5,6 +5,7 @@ class CreateExchanges < ActiveRecord::Migration[7.2]
       t.string :mic_code
       t.string :country
       t.string :timezone
+      t.string :currency # ISO 4217 currency code
       t.string :color
       t.text :description
       t.jsonb :links
