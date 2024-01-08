@@ -6,6 +6,12 @@ class User < ApplicationRecord
          :confirmable, :lockable, :trackable, :omniauthable,
          omniauth_providers: %i[google_oauth2 github]
 
+  has_many :api_keys, dependent: :destroy
+  has_many :transactions, dependent: :destroy
+
+  after_create :generate_first_api_key
+  after_create :add_starting_credits
+
   def self.from_omniauth(auth, referral = nil)
 	  find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
       user.email = auth.info.email
@@ -24,4 +30,39 @@ class User < ApplicationRecord
     end
   end
 
+  def charge_credits(amount, transactable)
+    if self.balance >= amount
+      Transaction.create!(
+        user: self,
+        amount: -amount,
+        transaction_timestamp: Time.now,
+        transactable: transactable
+      )
+      true
+    else
+      false
+    end
+  end
+
+  def add_credits(amount)
+    Transaction.create!(
+      user: self,
+      amount: amount,
+      transaction_timestamp: Time.now
+    )
+  end
+
+  def key
+    self.api_keys.first.key
+  end
+
+  private
+
+  def generate_first_api_key
+    self.api_keys.create
+  end
+
+  def add_starting_credits
+    self.add_credits(250)
+  end
 end

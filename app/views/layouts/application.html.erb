@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html class="h-full bg-gray-50">
   <head>
-    <title><%= content_for?(:title) ? ("#{yield(:title)} - Maybe").html_safe : "Maybe" %></title>
+    <title><%= content_for?(:title) ? ("#{yield(:title)} - Synth").html_safe : "Synth" %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <meta name="title" content="<%= content_for?(:title) ? ("#{yield(:title)} - Maybe").html_safe : "Maybe" %>">
+    <meta name="title" content="<%= content_for?(:title) ? ("#{yield(:title)} - Synth").html_safe : "Synth" %>">
     <meta name="description" content="<%= content_for?(:description) ? (yield(:description)) : "Fintech tools" %>">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="<%= content_for?(:title) ? ("#{yield(:title)} - Maybe").html_safe : "Maybe" %>">
+    <meta property="og:title" content="<%= content_for?(:title) ? ("#{yield(:title)} - Synth").html_safe : "Synth" %>">
     <meta property="og:description" content="<%= content_for?(:description) ? (yield(:description)) : "Fintech tools" %>">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<%= content_for?(:title) ? ("#{yield(:title)} - Maybe").html_safe : "Maybe" %>">
-    <meta name="twitter:site" content="@maybe">
-    <meta name="twitter:creator" content="@maybe">
+    <meta name="twitter:title" content="<%= content_for?(:title) ? ("#{yield(:title)} - Synth").html_safe : "Synth" %>">
+    <meta name="twitter:site" content="@synthfinance">
+    <meta name="twitter:creator" content="@synthfinance">
     <meta name="twitter:description" content="<%= content_for?(:description) ? (yield(:description)) : "Fintech tools" %>">
 
     <%= csrf_meta_tags %>
@@ -48,20 +48,20 @@
           </div>
 
           <div>
-            <!--
+            
             <div class="p-4 mb-2">
-              <div class="flex w-full p-3 align-middle bg-white rounded-lg shadow-sm">
+              <div class="flex justify-between w-full p-3 align-middle bg-white rounded-lg shadow-sm">
                 <div class="flex flex-col justify-center">
-                  <span class="text-sm text-gray-400 uppercase">Credit left:</span>
-                  <b class="text-xl font-semibold"><%#= number_to_currency(current_user.balance) %></b>
+                  <span class="text-sm text-gray-400 uppercase">Credits</span>
+                  <b class="text-xl font-semibold"><%= current_user.balance %></b>
                 </div>
 
                 <div class="flex items-center justify-end w-32">
-                  <%#= link_to "Add credit", billing_credits_path(20), class: "btn-primary", data: { turbo: false } %>
+                  <%= link_to "Add credit", "billing_credits_path(20)", class: "btn-primary", data: { turbo: false } %>
                 </div>
               </div>
             </div>
-            -->
+            
 
             <div class="p-4 pt-0">
               <button class="flex-shrink-0 block w-full rounded-xl group" data-dropdown-toggle="dropdownDotsHorizontal" data-dropdown-placement="top" data-dropdown-offset-skidding="">

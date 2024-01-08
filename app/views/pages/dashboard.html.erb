@@ -1,3 +1,59 @@
-<div>
-  <h1 class="text-4xl font-bold">Dashboard</h1>
+<div class="flex flex-col w-full max-w-3xl prose">
+  <h1 class="m-0 text-3xl font-medium">Overview</h1>
+
+  <h2 class="m-0 mt-3 text-2xl font-medium">Your API Key</h2>
+  <pre class="my-4 text-base"><code><%= current_user.api_keys.first.key %></code></pre>
+  <p class="mt-0 text-sm text-gray-500">Remember that your API key is a secret!. If someone gains access to your API key, they could potentially incur charges on your behalf.</p>
+  <!--
+  <h2 class="m-0 my-4 text-2xl font-medium">Pricing</h2>
+  <p class="text-sm font-normal text-gray-500 ">Pricing is based on usage. On a base level, we charge $0.000015 per character of content you send in for processing. That's obviously borderline useless for figuring out spending, though. 🙃</p>
+  <p class="m-0 text-sm font-normal text-gray-500 ">Basically, <b>it translates to about $0.75 per 10,000 words</b>.</p>
+  <p class="text-sm font-normal text-gray-500">Each API call you make will return the number of credits you used.</p>
+
+  <h2 class="m-0 my-4 text-2xl font-medium">Get to know the Detangle API</h2>
+  <div class="grid w-full grid-cols-2 gap-4">
+    <%= link_to 'https://docs.detangle.ai', class: 'flex space-x-2 no-underline border border-gray-200 hover:border-gray-300 rounded-xl p-3' do %>
+      <div class="text-2xl">👋</div>
+      <div>
+        <h3 class="m-0 text-base font-normal">Introduction</h3>
+        <p class="m-0 text-sm font-normal text-gray-500">Get started with the Detangle API</p>
+      </div>
+    <% end %>
+    <%= link_to 'https://docs.detangle.ai/reference/create-summarization', class: 'flex space-x-2 no-underline border border-gray-200 hover:border-gray-300 rounded-xl p-3' do %>
+      <div class="text-2xl">✍️</div>
+      <div>
+        <h3 class="m-0 text-base font-normal">Summarization</h3>
+        <p class="m-0 text-sm font-normal text-gray-500">Learn how to summarize files</p>
+      </div>
+    <% end %>
+    <%= link_to 'https://docs.detangle.ai/reference/create-extraction', class: 'flex space-x-2 no-underline border border-gray-200 hover:border-gray-300 rounded-xl p-3' do %>
+      <div class="text-2xl">🔍</div>
+      <div>
+        <h3 class="m-0 text-base font-normal">Extraction</h3>
+        <p class="m-0 text-sm font-normal text-gray-500">Pull any data from your documents</p>
+      </div>
+    <% end %>
+    <%= link_to 'https://docs.detangle.ai/reference/create-anonymization', class: 'flex space-x-2 no-underline border border-gray-200 hover:border-gray-300 rounded-xl p-3' do %>
+      <div class="text-2xl">🫥</div>
+      <div>
+        <h3 class="m-0 text-base font-normal">Anonymization</h3>
+        <p class="m-0 text-sm font-normal text-gray-500">Anonymize any sensitive data</p>
+      </div>
+    <% end %>
+    <%= link_to 'https://docs.detangle.ai/reference/create-sentiment-analysis', class: 'flex space-x-2 no-underline border border-gray-200 hover:border-gray-300 rounded-xl p-3' do %>
+      <div class="text-2xl">👍</div>
+      <div>
+        <h3 class="m-0 text-base font-normal">Sentiment Analysis</h3>
+        <p class="m-0 text-sm font-normal text-gray-500">Analyze the sentiment of any string of text</p>
+      </div>
+    <% end %>
+    <%= link_to 'https://zapier.com/developer/public-invite/190090/35f7dba89abf244e654914044b0c8cc3/', class: 'flex space-x-2 no-underline border border-gray-200 hover:border-gray-300 rounded-xl p-3 items-start' do %>
+      <%= image_tag('https://logo.clearbit.com/zapier.com', alt: 'Zapier Logo', class: 'm-0 mt-1 h-5 w-5') %>   
+      <div>
+        <h3 class="m-0 text-base font-normal">Zapier</h3>
+        <p class="m-0 text-sm font-normal text-gray-500">Connect to thousands of services using Zapier!</p>
+      </div>
+    <% end %>
+  </div>
+  -->
 </div>
