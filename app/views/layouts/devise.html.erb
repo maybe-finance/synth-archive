@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html class="h-full bg-gray-50">
+  <head>
+    <title><%= content_for?(:title) ? ("#{yield(:title)} - Maybe").html_safe : "Maybe" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<%= content_for?(:title) ? ("#{yield(:title)} - Maybe").html_safe : "Maybe" %>">
+    <meta property="og:description" content="<%= content_for?(:description) ? (yield(:description)) : "" %>">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= content_for?(:title) ? ("#{yield(:title)} - Maybe").html_safe : "Maybe" %>">
+    <meta name="twitter:site" content="@maybe">
+    <meta name="twitter:creator" content="@maybe">
+    <meta name="twitter:description" content="<%= content_for?(:description) ? (yield(:description)) : "" %>">
+
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <script src="https://kit.fontawesome.com/09f4b35cc5.js" crossorigin="anonymous"></script>
+    <%= hotwire_livereload_tags if Rails.env.development? %>
+  </head>
+
+  <body class="h-full">
+    <div class="flex flex-col justify-between min-h-full py-12 sm:px-6 lg:px-8">
+      <div class="flex flex-col justify-center flex-grow">
+        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+          <%= image_tag "logomark.svg", class: "w-auto h-10 mx-auto" %>
+        </div>
+
+        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+          <%= yield %>
+        </div>
+      </div>
+
+      <div class="p-8 mt-2 text-sm text-center text-gray-400">
+        <p class="mt-6"><a href="https://maybe.co/privacy" class="text-gray-400">Privacy Policy</a> &bull; <a href="https://maybe.co/terms" class="text-gray-400">Terms of Service</a></p>
+        <p>&copy; 2023 Maybe. All rights reserved.</p>
+      </div>
+    </div>
+  </body>
+</html>

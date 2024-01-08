@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  mic_code: MyString
+  country: MyString
+  timezone: MyString
+  color: MyString
+  market_open: false
+  description: MyText
+  links: 
+
+two:
+  name: MyString
+  mic_code: MyString
+  country: MyString
+  timezone: MyString
+  color: MyString
+  market_open: false
+  description: MyText
+  links: 

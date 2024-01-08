@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exchange: one
+  day_of_week: 1
+  open_time: 2024-01-07 16:58:56
+  close_time: 2024-01-07 16:58:56
+  specific_date: 2024-01-07
+
+two:
+  exchange: two
+  day_of_week: 1
+  open_time: 2024-01-07 16:58:56
+  close_time: 2024-01-07 16:58:56
+  specific_date: 2024-01-07

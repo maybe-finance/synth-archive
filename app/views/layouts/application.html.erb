@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html class="h-full bg-gray-50">
+  <head>
+    <title><%= content_for?(:title) ? ("#{yield(:title)} - Maybe").html_safe : "Maybe" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <meta name="title" content="<%= content_for?(:title) ? ("#{yield(:title)} - Maybe").html_safe : "Maybe" %>">
+    <meta name="description" content="<%= content_for?(:description) ? (yield(:description)) : "Fintech tools" %>">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<%= content_for?(:title) ? ("#{yield(:title)} - Maybe").html_safe : "Maybe" %>">
+    <meta property="og:description" content="<%= content_for?(:description) ? (yield(:description)) : "Fintech tools" %>">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= content_for?(:title) ? ("#{yield(:title)} - Maybe").html_safe : "Maybe" %>">
+    <meta name="twitter:site" content="@maybe">
+    <meta name="twitter:creator" content="@maybe">
+    <meta name="twitter:description" content="<%= content_for?(:description) ? (yield(:description)) : "Fintech tools" %>">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <script src="https://kit.fontawesome.com/09f4b35cc5.js" crossorigin="anonymous"></script>
+    <%= hotwire_livereload_tags if Rails.env.development? %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="h-full">
+      <div class="hidden md:fixed md:inset-y-0 md:flex md:w-[275px] md:flex-col">
+        <div class="flex flex-col justify-between flex-grow pt-5 overflow-y-auto bg-gray-50">
+          <div>
+            <div class="px-6 mb-4">
+              <%= link_to image_tag("logomark.svg", class: 'block w-auto h-6'), root_path, data: { turbo: false} %>
+            </div>
+
+            <div class="flex flex-col flex-1 p-4">
+              <nav class="flex-1 pb-4 space-y-1">
+                <%= navigation_link(root_path, 'Dashboard', 'fa-library') %>
+                <%#= navigation_link("https://docs.detangle.ai", 'Documentation', 'fa-documentation') %>
+                <%#= navigation_link(dashboard_path, 'Billing', 'fa-billing') %>
+              </nav>
+            </div>
+          </div>
+
+          <div>
+            <!--
+            <div class="p-4 mb-2">
+              <div class="flex w-full p-3 align-middle bg-white rounded-lg shadow-sm">
+                <div class="flex flex-col justify-center">
+                  <span class="text-sm text-gray-400 uppercase">Credit left:</span>
+                  <b class="text-xl font-semibold"><%#= number_to_currency(current_user.balance) %></b>
+                </div>
+
+                <div class="flex items-center justify-end w-32">
+                  <%#= link_to "Add credit", billing_credits_path(20), class: "btn-primary", data: { turbo: false } %>
+                </div>
+              </div>
+            </div>
+            -->
+
+            <div class="p-4 pt-0">
+              <button class="flex-shrink-0 block w-full rounded-xl group" data-dropdown-toggle="dropdownDotsHorizontal" data-dropdown-placement="top" data-dropdown-offset-skidding="">
+                <div class="relative flex w-full">
+
+                  <div class="flex">
+                    <div class="flex items-center justify-center text-base text-black "><i class="mr-2 text-lg fa-kit fa-account"></i> <%= current_user.name %></div>
+                  </div>
+                </div>
+              </button>
+              <div id="dropdownDotsHorizontal" class="z-10 hidden p-1 bg-white border border-gray-200 rounded-lg shadow-xs dark:bg-gray-700">
+                <ul class="text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
+                  <li>
+                    <%= link_to '#', class: 'flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-gray-100 group' do %>
+                      <i class="flex-shrink-0 mr-2 text-lg text-gray-400 fa-kit fa-settings"></i>
+                      Account settings
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to '#', data: { controller: 'intercom', action: 'click->intercom#showIntercom' }, class: 'flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-gray-100 group' do %>
+                      <i class="flex-shrink-0 mr-2 text-lg text-gray-400 fa-kit fa-bulb"></i>
+                      Send feedback
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to '#', data: { controller: 'intercom', action: 'click->intercom#showIntercom' }, class: 'flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-gray-100 group' do %>
+                      <i class="flex-shrink-0 mr-2 text-lg text-gray-400 fa-kit fa-help"></i>
+                      Get help
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to destroy_user_session_path, method: :delete, class: 'flex items-center px-3 py-2 text-sm font-medium text-red-500 rounded-md hover:bg-gray-100 group' do %>
+                      <i class="flex-shrink-0 mr-2 text-lg text-red-500 fa-kit fa-sign-out"></i>
+                      Sign out
+                    <% end %>
+                  </li>
+                </ul>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col flex-1 md:pl-64">
+        <main class="p-6 m-6 bg-white rounded-lg shadow-sm">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

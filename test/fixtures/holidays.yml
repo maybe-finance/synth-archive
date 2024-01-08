@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exchange: one
+  name: MyString
+  date: 2024-01-07
+
+two:
+  exchange: two
+  name: MyString
+  date: 2024-01-07
