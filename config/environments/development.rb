@@ -82,4 +82,5 @@ Rails.application.configure do
 
   # Set host for accessing via ngrok
   config.hosts << "sabotage.ngrok.dev"
+  config.hosts << "api.synth.ngrok.dev"
 end

@@ -30,14 +30,24 @@ class User < ApplicationRecord
     end
   end
 
-  def charge_credits(amount, transactable)
+  def charge_credits(amount, transactable = nil, notes = nil)
     if self.balance >= amount
-      Transaction.create!(
-        user: self,
-        amount: -amount,
-        transaction_timestamp: Time.now,
-        transactable: transactable
-      )
+
+      if transactable.present?
+        Transaction.create!(
+          user: self,
+          amount: -amount,
+          transaction_timestamp: Time.now,
+          transactable: transactable
+        )
+      else
+        Transaction.create!(
+          user: self,
+          amount: -amount,
+          description: notes,
+          transaction_timestamp: Time.now
+        )
+      end
       true
     else
       false

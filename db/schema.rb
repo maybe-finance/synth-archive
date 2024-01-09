@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_01_08_022707) do
+ActiveRecord::Schema[7.2].define(version: 2024_01_08_201443) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -63,6 +63,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_08_022707) do
     t.jsonb "links"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "operating_mic_code"
+    t.string "kind", default: "operating"
+    t.string "legal_name"
+    t.string "lei"
+    t.string "mic_category"
+    t.string "acronym"
+    t.string "country_code"
+    t.string "city"
+    t.boolean "active", default: true
+    t.text "notes"
+    t.boolean "primary", default: false
+    t.decimal "lat", precision: 10, scale: 6
+    t.decimal "lng", precision: 10, scale: 6
   end
 
   create_table "good_job_batches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

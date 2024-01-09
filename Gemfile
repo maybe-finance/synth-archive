@@ -48,6 +48,8 @@ gem "bootsnap", require: false
 gem "image_processing", "~> 1.2"
 gem "aws-sdk-s3", require: false
 
+gem 'pagy'
+
 # Authentication
 gem 'devise', github: 'heartcombo/devise'
 gem 'omniauth'
@@ -57,6 +59,13 @@ gem 'omniauth-github'
 
 # Background jobs
 gem 'good_job'
+
+# Data
+gem 'faraday'
+gem 'geocoder'
+gem 'timezone'
+gem 'geo_names'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

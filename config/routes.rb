@@ -5,13 +5,12 @@ Rails.application.routes.draw do
 
   devise_for :users, skip: [:registrations, :passwords, :confirmations], controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  # devise_scope :user do
-  #   #get 'sign_in', to: 'devise/sessions#new', as: :new_user_session
-  #   get 'sign_up', to: redirect('/users/sign_in'), as: :new_user_registration
-  #   get 'password/new', to: redirect('/users/sign_in'), as: :new_user_password
-  #   get 'confirmation/new', to: redirect('/users/sign_in'), as: :new_user_confirmation
-  # end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  constraints subdomain: /.*api.*/ do
+    namespace :api, path: nil do
+      resources :exchanges, only: [:index, :show]
+      resource :user, only: [:show]
+    end
+  end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

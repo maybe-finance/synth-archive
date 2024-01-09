@@ -1,0 +1,9 @@
+json.id exchange.id
+json.name exchange.name
+json.acronym exchange.acronym
+json.mic_code exchange.mic_code
+json.city exchange.city
+json.country_code exchange.country_code
+json.timezone exchange.timezone
+json.currency exchange.currency
+json.links exchange.links
