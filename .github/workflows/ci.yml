@@ -20,7 +20,7 @@ jobs:
 
       - name: Lint code for consistent style
         run: |
-          gem install error_highlight -v 0.5.1
+          gem install error_highlight -v 0.6.0
           bin/rubocop -f github
 
   test:
@@ -51,7 +51,7 @@ jobs:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
         run: |
-          gem install error_highlight -v 0.5.1
+          gem install error_highlight -v 0.6.0
           bin/rails db:setup test test:system
 
       - name: Keep screenshots from failed system tests
