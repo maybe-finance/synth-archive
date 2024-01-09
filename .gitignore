@@ -37,4 +37,5 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 *NOTES*
-lib/data/.DS_Store
+.DS_Store
+/lib/data/*

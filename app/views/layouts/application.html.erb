@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-full bg-gray-50">
+<html class="h-full bg-vista-50">
   <head>
     <title><%= content_for?(:title) ? ("#{yield(:title)} - Synth").html_safe : "Synth" %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -32,10 +32,10 @@
   <body>
     <div class="h-full">
       <div class="hidden md:fixed md:inset-y-0 md:flex md:w-[275px] md:flex-col">
-        <div class="flex flex-col justify-between flex-grow pt-5 overflow-y-auto bg-gray-50">
+        <div class="flex flex-col justify-between flex-grow pt-5 overflow-y-auto bg-vista-50">
           <div>
             <div class="px-6 mb-4">
-              <%= link_to image_tag("logomark.svg", class: 'block w-auto h-6'), root_path, data: { turbo: false} %>
+              <%= link_to image_tag("logo-color.svg", class: 'block w-auto h-8'), root_path, data: { turbo: false} %>
             </div>
 
             <div class="flex flex-col flex-1 p-4">

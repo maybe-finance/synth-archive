@@ -26,9 +26,9 @@ module ApplicationHelper
   end
 
   def navigation_link(path, text, icon)
-    css_class = current_page?(path) ? 'flex gap-x-2 items-center px-3 py-3 text-base font-medium text-gray-900 rounded-md hover:bg-gray-200 bg-gray-100 group' 
-                                     : 'flex gap-x-2 items-center px-3 py-3 text-base font-medium text-gray-400 rounded-md hover:bg-gray-200 group'
-    icon_color = current_page?(path) ? 'text-caribbean-green-500' : 'text-gray-400'
+    css_class = current_page?(path) ? 'flex gap-x-2 items-center px-3 py-3 text-base font-medium text-woodsmoke-900 rounded-md hover:bg-woodsmoke-200 bg-woodsmoke-100 group' 
+                                     : 'flex gap-x-2 items-center px-3 py-3 text-base font-medium text-woodsmoke-400 rounded-md hover:bg-woodsmoke-200 group'
+    icon_color = current_page?(path) ? 'text-caribbean-green-500' : 'text-woodsmoke-400'
     
     link_to path, class: css_class do
       concat(content_tag(:i, nil, class: "text-lg #{icon_color} fa-kit #{icon}"))
