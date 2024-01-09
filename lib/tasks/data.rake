@@ -4,7 +4,7 @@ namespace :data do
     # https://www.iso20022.org/market-identifier-codes
     require 'csv'
 
-    csv = CSV.parse(File.read(Rails.root.join('lib/data/exchanges.csv')), headers: true)
+    csv = CSV.parse(File.read(Rails.root.join('storage/data/exchanges.csv')), headers: true)
 
     # These are the CSV columns:
     # "MIC","OPERATING MIC","OPRT/SGMT","MARKET NAME-INSTITUTION DESCRIPTION","LEGAL ENTITY NAME","LEI","MARKET CATEGORY CODE","ACRONYM","ISO COUNTRY CODE (ISO 3166)","CITY","WEBSITE","STATUS","CREATION DATE","LAST UPDATE DATE","LAST VALIDATION DATE","EXPIRY DATE","COMMENTS"
