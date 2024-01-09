@@ -1,5 +1,5 @@
 json.data do
-  json.partial! 'exchange', collection: @exchanges, as: :exchange
+  json.partial! "exchange", collection: @exchanges, as: :exchange
 end
 json.paging do
   json.prev @pagy_metadata[:prev_url]

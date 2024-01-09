@@ -48,23 +48,23 @@ gem "bootsnap", require: false
 gem "image_processing", "~> 1.2"
 gem "aws-sdk-s3", require: false
 
-gem 'pagy'
+gem "pagy"
 
 # Authentication
-gem 'devise', github: 'heartcombo/devise'
-gem 'omniauth'
-gem 'omniauth-rails_csrf_protection'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-github'
+gem "devise", github: "heartcombo/devise"
+gem "omniauth"
+gem "omniauth-rails_csrf_protection"
+gem "omniauth-google-oauth2"
+gem "omniauth-github"
 
 # Background jobs
-gem 'good_job'
+gem "good_job"
 
 # Data
-gem 'faraday'
-gem 'geocoder'
-gem 'timezone'
-gem 'geo_names'
+gem "faraday"
+gem "geocoder"
+gem "timezone"
+gem "geo_names"
 
 
 group :development, :test do
@@ -76,9 +76,9 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem 'dotenv-rails'
+  gem "dotenv-rails"
 
-  gem 'letter_opener'
+  gem "letter_opener"
 
   gem "hotwire-livereload"
 end
@@ -94,7 +94,7 @@ group :development do
   # gem "spring"
 
   # Highlight the fine-grained location where an error occurred [https://github.com/ruby/error_highlight]
-  gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+  gem "error_highlight", ">= 0.4.0", platforms: [ :ruby ]
 end
 
 group :test do

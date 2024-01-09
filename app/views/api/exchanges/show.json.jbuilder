@@ -1,5 +1,5 @@
 json.data do
-  json.partial! 'exchange', locals: {exchange: @exchange}
+  json.partial! "exchange", locals: { exchange: @exchange }
 end
 json.meta do
   json.credits_used 1

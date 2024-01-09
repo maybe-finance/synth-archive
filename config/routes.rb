@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   authenticate :user, ->(user) { user.admin? } do
-    mount GoodJob::Engine => 'background'
+    mount GoodJob::Engine => "background"
   end
 
-  devise_for :users, skip: [:registrations, :passwords, :confirmations], controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, skip: [ :registrations, :passwords, :confirmations ], controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   constraints subdomain: /.*api.*/ do
     namespace :api, path: nil do
-      resources :exchanges, only: [:index, :show]
-      resource :user, only: [:show]
+      resources :exchanges, only: [ :index, :show ]
+      resource :user, only: [ :show ]
     end
   end
 

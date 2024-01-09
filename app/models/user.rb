@@ -13,7 +13,7 @@ class User < ApplicationRecord
   after_create :add_starting_credits
 
   def self.from_omniauth(auth, referral = nil)
-	  find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
+    find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name   # assuming the user model has a name

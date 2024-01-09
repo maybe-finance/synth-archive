@@ -78,7 +78,7 @@ Rails.application.configure do
   config.generators.apply_rubocop_autocorrect_after_generate!
 
   # Set the default URL for Action Mailer
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
   # Set host for accessing via ngrok
   config.hosts << "sabotage.ngrok.dev"

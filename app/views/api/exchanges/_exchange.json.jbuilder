@@ -10,7 +10,7 @@ json.currency exchange.currency
 json.links exchange.links
 
 if params[:related]
-  if exchange.kind == 'segment'
+  if exchange.kind == "segment"
     json.operating_exchange do
       json.id exchange.parent.id
       json.name exchange.parent.name
@@ -25,7 +25,7 @@ if params[:related]
     end
   end
 
-  if exchange.kind == 'operating'
+  if exchange.kind == "operating"
     json.segment_exchanges do
       json.array! exchange.children do |segment|
         json.id segment.id

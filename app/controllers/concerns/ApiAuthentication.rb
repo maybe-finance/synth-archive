@@ -21,6 +21,6 @@ module ApiAuthentication
   end
 
   def unauthenticated
-    render json: { error: 'Invalid API key' }, status: :unauthorized
+    render json: { error: "Invalid API key" }, status: :unauthorized
   end
 end

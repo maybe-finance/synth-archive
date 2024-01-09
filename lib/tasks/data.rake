@@ -2,9 +2,9 @@ namespace :data do
   desc "Import exchanges"
   task import_exchanges: :environment do
     # https://www.iso20022.org/market-identifier-codes
-    require 'csv'
+    require "csv"
 
-    csv = CSV.parse(File.read(Rails.root.join('storage/data/exchanges.csv')), headers: true)
+    csv = CSV.parse(File.read(Rails.root.join("storage/data/exchanges.csv")), headers: true)
 
     # These are the CSV columns:
     # "MIC","OPERATING MIC","OPRT/SGMT","MARKET NAME-INSTITUTION DESCRIPTION","LEGAL ENTITY NAME","LEI","MARKET CATEGORY CODE","ACRONYM","ISO COUNTRY CODE (ISO 3166)","CITY","WEBSITE","STATUS","CREATION DATE","LAST UPDATE DATE","LAST VALIDATION DATE","EXPIRY DATE","COMMENTS"
@@ -36,34 +36,33 @@ namespace :data do
 
     csv.each do |row|
       links = nil
-      
-      website = row['WEBSITE']&.downcase
-      
+
+      website = row["WEBSITE"]&.downcase
+
       if website.present?
-        website = website.start_with?('http://') ? website.gsub('http://', 'https://') : website
-        website = website.start_with?('https://') ? website : 'https://' + website
+        website = website.start_with?("http://") ? website.gsub("http://", "https://") : website
+        website = website.start_with?("https://") ? website : "https://" + website
 
         links = { website: website }
       end
 
-      Exchange.find_or_create_by(mic_code: row['MIC']).update(
-        name: row['MARKET NAME-INSTITUTION DESCRIPTION']&.titleize,
-        operating_mic_code: row['OPERATING MIC'],
-        kind: row['OPRT/SGMT'] == 'OPRT' ? 'operating' : 'segment',
-        legal_name: row['LEGAL ENTITY NAME']&.titleize,
-        lei: row['LEI'],
-        mic_category: row['MARKET CATEGORY CODE'],
-        acronym: row['ACRONYM'],
-        country_code: row['ISO COUNTRY CODE (ISO 3166)'],
-        city: row['CITY']&.titleize,
-        active: row['STATUS'] == 'ACTIVE',
-        notes: row['COMMENTS']&.downcase&.capitalize,
+      Exchange.find_or_create_by(mic_code: row["MIC"]).update(
+        name: row["MARKET NAME-INSTITUTION DESCRIPTION"]&.titleize,
+        operating_mic_code: row["OPERATING MIC"],
+        kind: row["OPRT/SGMT"] == "OPRT" ? "operating" : "segment",
+        legal_name: row["LEGAL ENTITY NAME"]&.titleize,
+        lei: row["LEI"],
+        mic_category: row["MARKET CATEGORY CODE"],
+        acronym: row["ACRONYM"],
+        country_code: row["ISO COUNTRY CODE (ISO 3166)"],
+        city: row["CITY"]&.titleize,
+        active: row["STATUS"] == "ACTIVE",
+        notes: row["COMMENTS"]&.downcase&.capitalize,
         links: links
       )
 
       puts "Imported #{row['MARKET NAME-INSTITUTION DESCRIPTION'].titleize}"
     end
-
   end
 
   desc "Geocode exchanges"
@@ -113,7 +112,7 @@ namespace :data do
       if data.nil? || exchange.country_code == "ZZ"
         puts "Currency not found for #{exchange.name}"
       else
-        exchange.currency = data.last.first['currencyCode']
+        exchange.currency = data.last.first["currencyCode"]
         exchange.save
 
         puts "Set currency for #{exchange.name}"
@@ -121,4 +120,3 @@ namespace :data do
     end
   end
 end
-
