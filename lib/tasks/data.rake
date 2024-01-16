@@ -1,4 +1,19 @@
 namespace :data do
+  desc "Import NASDAQ symbols"
+  task import_nasdaq_symbols: :environment do
+    require "csv"
+
+    csv = CSV.parse(File.read(Rails.root.join("storage/data/nasdaq.csv")), headers: true)
+
+    csv.each do |row|
+      exchange = Exchange.find_by(mic_code: "XNAS")
+        puts "Importing #{row["Symbol"]}"
+        Security.find_or_create_by(symbol: row["Symbol"], exchange_id: exchange.id).update(
+          legal_name: row["Name"]
+        )
+    end
+  end
+
   desc "Import exchanges"
   task import_exchanges: :environment do
     # https://www.iso20022.org/market-identifier-codes

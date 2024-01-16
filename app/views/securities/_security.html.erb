@@ -1,0 +1,47 @@
+<div id="<%= dom_id security %>">
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Logos:</strong>
+    <%= link_to security.logos.filename, security.logos if security.logos.attached? %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Exchange:</strong>
+    <%= security.exchange.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Name:</strong>
+    <%= security.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Symbol:</strong>
+    <%= security.symbol %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Legal name:</strong>
+    <%= security.legal_name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Links:</strong>
+    <%= security.links %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Color:</strong>
+    <%= security.color %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Description:</strong>
+    <%= security.description %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this security", security, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this security", edit_security_path(security), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

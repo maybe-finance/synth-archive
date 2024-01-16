@@ -9,8 +9,12 @@ Rails.application.routes.draw do
     namespace :api, path: nil do
       resources :exchanges, only: [ :index, :show ]
       resource :user, only: [ :show ]
+      get "logo/search" => "logos#search"
+      get "logo/security/:symbol" => "logos#security"
     end
   end
+
+  resources :securities
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

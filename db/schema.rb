@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_01_08_201443) do
+ActiveRecord::Schema[7.2].define(version: 2024_01_16_161107) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -182,6 +182,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_08_201443) do
     t.index ["exchange_id"], name: "index_operating_hours_on_exchange_id"
   end
 
+  create_table "securities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "exchange_id", null: false
+    t.string "name"
+    t.string "symbol"
+    t.string "legal_name"
+    t.jsonb "links", default: {}
+    t.string "color"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exchange_id"], name: "index_securities_on_exchange_id"
+  end
+
   create_table "transactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.integer "amount"
@@ -232,5 +245,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_08_201443) do
   add_foreign_key "api_keys", "users"
   add_foreign_key "holidays", "exchanges"
   add_foreign_key "operating_hours", "exchanges"
+  add_foreign_key "securities", "exchanges"
   add_foreign_key "transactions", "users"
 end
