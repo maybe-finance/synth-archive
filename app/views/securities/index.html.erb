@@ -3,11 +3,57 @@
     <p class="inline-block px-3 py-2 mb-5 font-medium text-green-500 rounded-lg bg-green-50" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex items-center justify-between">
+  <div class="flex items-center justify-between mb-4">
     <h1 class="text-4xl font-bold">Securities</h1>
   </div>
 
   <div id="securities" class="min-w-full">
-    <%= render @securities %>
+    <ul role="list" class="grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-3 xl:gap-x-8">
+      <% @securities.each do |security| %>
+      <li class="overflow-hidden border border-gray-200 rounded-xl">
+        <div class="flex items-center p-6 border-b gap-x-4 border-gray-900/5 bg-gray-50">
+          <% if security.logos.first.present? %>
+            <img src="<%= url_for(security.logos.first) %>" alt="<%= security.symbol %>" class="flex-none object-cover w-12 h-12 bg-white rounded-lg ring-1 ring-gray-900/10">
+          <% else %>
+            <div class="flex-none object-cover w-12 h-12 bg-gray-200 rounded-lg ring-1 ring-gray-900/10"></div>
+          <% end %>
+          <div>
+            <% if security.name.blank? %>
+            <div class="text-sm italic font-medium leading-6 text-gray-300">
+              Common name needed
+            </div>
+            <% else %>
+            <div class="text-sm font-medium leading-6 text-gray-900">
+              <%= security.name %>
+            </div>
+            <% end %>
+            <div class="text-xs font-medium leading-6 text-gray-900"><%= security.symbol %></div>
+          </div>
+        </div>
+        <dl class="px-6 py-4 -my-3 text-sm leading-6 divide-y divide-gray-100">
+          <div class="flex-col justify-between py-3 gap-x-4">
+            <dt class="text-xs text-gray-400">Exchange</dt>
+            <dd class="text-gray-700"><%= security.exchange.name %></dd>
+          </div>
+          <div class="flex-col justify-between py-3 gap-x-4">
+            <dt class="text-xs text-gray-400">Legal name</dt>
+            <dd class="text-gray-700"><%= security.legal_name %></dd>
+          </div>
+          <div class="flex-col justify-between py-3 gap-x-4">
+            <dt class="text-xs text-gray-400">Color</dt>
+            <dd class="text-gray-700"><%= security.color %></dd>
+          </div>
+          <div class="flex-col justify-between py-3 gap-x-4">
+            <dt class="text-xs text-gray-400">Description</dt>
+            <dd class="text-gray-700"><%= security.description %></dd>
+          </div>
+        </dl>
+        <div class="px-6 pb-4 text-right">
+          <%= link_to 'Edit', edit_security_path(security), class: 'text-xs font-medium text-blue-600 hover:text-blue-500' %>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+
   </div>
 </div>

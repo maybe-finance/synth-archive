@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :api_keys, dependent: :destroy
   has_many :transactions, dependent: :destroy
+  has_many :changesets
 
   after_create :generate_first_api_key
   after_create :add_starting_credits

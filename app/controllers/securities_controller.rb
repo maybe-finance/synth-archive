@@ -1,20 +1,18 @@
 class SecuritiesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_security, only: %i[ show edit update destroy ]
 
-  # GET /securities or /securities.json
   def index
-    @securities = Security.limit(10).order(:name)
+    @securities = Security.limit(9).order(:name)
   end
 
-  # GET /securities/1 or /securities/1.json
+
   def show
   end
   
-  # GET /securities/1/edit
   def edit
   end
 
-  # POST /securities or /securities.json
   def create
     @security = Security.new(security_params)
 
@@ -29,20 +27,16 @@ class SecuritiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /securities/1 or /securities/1.json
   def update
-    respond_to do |format|
-      if @security.update(security_params)
-        format.html { redirect_to security_url(@security), notice: "Security was successfully updated." }
-        format.json { render :show, status: :ok, location: @security }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @security.errors, status: :unprocessable_entity }
-      end
+    @changeset = @security.changesets.new(proposed_changes: security_params, user: current_user)
+
+    if @changeset.save
+      redirect_to @security
+    else
+      render :edit
     end
   end
 
-  # DELETE /securities/1 or /securities/1.json
   def destroy
     @security.destroy!
 
