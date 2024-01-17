@@ -31,7 +31,7 @@ module ApplicationHelper
     icon_color = current_page?(path) ? "text-caribbean-green-500" : "text-woodsmoke-400"
 
     link_to path, class: css_class do
-      concat(content_tag(:i, nil, class: "text-lg #{icon_color} fa-kit #{icon}"))
+      concat(content_tag(:i, nil, class: "text-lg #{icon_color} fa-regular #{icon}"))
       concat(text)
     end
   end

@@ -22,7 +22,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <script src="https://kit.fontawesome.com/09f4b35cc5.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/88c2fe283f.js" crossorigin="anonymous"></script>
     <%= hotwire_livereload_tags if Rails.env.development? %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -40,7 +40,8 @@
 
             <div class="flex flex-col flex-1 p-4">
               <nav class="flex-1 pb-4 space-y-1">
-                <%= navigation_link(root_path, 'Dashboard', 'fa-library') %>
+                <%= navigation_link(root_path, 'Dashboard', 'fa-house') %>
+                <%= navigation_link(securities_path, 'Securities', 'fa-building-columns') %>
                 <%#= navigation_link("https://docs.detangle.ai", 'Documentation', 'fa-documentation') %>
                 <%#= navigation_link(dashboard_path, 'Billing', 'fa-billing') %>
               </nav>
