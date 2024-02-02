@@ -37,7 +37,8 @@ And visit [http://localhost:3000](http://localhost:3000)
 
 ## External Services
 
-Currently the app relies either Google or GitHub for authentication. The easiest of which to set up is GitHub.
+- Currently the app relies either Google or GitHub for authentication. The easiest of which to set up is GitHub.
+- In order to successfully run `rails db:setup` you will also need to create a [GeoNames](https://www.geonames.org/) account to be used by the [Timezone](https://github.com/panthomakos/timezone) gem.
 
 You can find the necessary API keys in `.env.example`, which you can copy to `.env` and fill in the values.
 
