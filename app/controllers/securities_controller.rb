@@ -29,9 +29,21 @@ class SecuritiesController < ApplicationController
 
   def update
     @changeset = @security.changesets.new(proposed_changes: security_params, user: current_user)
+    
+    if params[:action_type] == 'name'
+      @changeset.credits = 100
+    elsif params[:action_type] == 'color'
+      @changeset.credits = 250
+    end
 
     if @changeset.save
-      redirect_to @security
+      if params[:action_type] == 'name'
+        redirect_to name_securities_path and return
+      elsif params[:action_type] == 'color'
+        redirect_to color_securities_path and return
+      else
+        redirect_to @security
+      end
     else
       render :edit
     end
@@ -46,6 +58,20 @@ class SecuritiesController < ApplicationController
     end
   end
 
+  def name
+    @security = Security.left_outer_joins(:changesets)
+                          .where(name: nil, changesets: { id: nil })
+                          .order(Arel.sql('RANDOM()'))
+                          .first
+  end
+
+  def color
+    @security = Security.left_outer_joins(:changesets)
+                          .where(color: nil, changesets: { id: nil })
+                          .order(Arel.sql('RANDOM()'))
+                          .first
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_security
@@ -54,6 +80,6 @@ class SecuritiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def security_params
-      params.require(:security).permit(:logos, :exchange_id, :name, :symbol, :legal_name, :links, :color, :description)
+      params.require(:security).permit(:logos, :exchange_id, :name, :symbol, :legal_name, :links, :color, :description, :action_type)
     end
 end

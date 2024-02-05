@@ -14,7 +14,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :securities
+  resources :securities do
+    collection do
+      get "name"
+      get "logo"
+      get "color"
+      get "description"
+    end
+  end
+
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

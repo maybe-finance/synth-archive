@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_01_16_195219) do
+ActiveRecord::Schema[7.2].define(version: 2024_01_17_190325) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_16_195219) do
     t.uuid "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "credits", default: 0
     t.index ["changeable_type", "changeable_id"], name: "index_changesets_on_changeable"
     t.index ["user_id"], name: "index_changesets_on_user_id"
   end

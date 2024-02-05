@@ -51,6 +51,12 @@
           <div>
             
             <div class="p-4 mb-2">
+              <% if current_user.pending_credits > 0 %>
+              <div class="flex items-center justify-between px-3 py-2 mb-2 border rounded-lg bg-woodsmoke-100 border-woodsmoke-200/50">
+                <span class="text-xs uppercase text-woodsmoke-400">Pending Credits</span>
+                <b class="text-sm font-semibold"><%= current_user.pending_credits %></b>
+              </div>
+              <% end %>
               <div class="flex justify-between w-full p-3 align-middle bg-white rounded-lg shadow-sm">
                 <div class="flex flex-col justify-center">
                   <span class="text-sm text-gray-400 uppercase">Credits</span>

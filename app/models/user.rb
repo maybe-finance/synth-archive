@@ -67,6 +67,10 @@ class User < ApplicationRecord
     self.api_keys.first.key
   end
 
+  def pending_credits
+    self.changesets.where(status: 'pending').sum(:credits)
+  end
+
   private
 
   def generate_first_api_key
