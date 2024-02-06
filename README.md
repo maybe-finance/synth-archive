@@ -1,3 +1,7 @@
+🚨 **NOTE:** We've archived the original repo but are leaving it here for posterity. We're still actively building Synth but focusing less on the OSS side of the app and more on the "community" parts of the data.
+
+---
+
 # Synth: Modern fintech tools for modern businesses
 
 Synth aims to build a modern fintech stack and data platform for modern businesses.
